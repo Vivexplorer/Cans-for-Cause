@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cans for Cause</title>
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #fff;
+    color: #1d1d1f;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+  }
+  .logo {
+    height: 40px;
+  }
+  .title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+    font-size: 1.5rem;
+    user-select: none;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #1d1d1f;
+    font-weight: 500;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  nav a.active,
+  nav a:hover,
+  nav a:focus {
+    border-bottom-color: #007bff;
+  }
+  main section {
+    display: none;
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    text-align: center;
+  }
+  main section.active {
+    display: block;
+  }
+  .main-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Recycle001.svg/1200px-Recycle001.svg.png" alt="Cans for Cause Logo" />
+  <div class="title">Cans for Cause</div>
+  <nav>
+    <ul>
+      <li><a data-target="overview" class="active">Overview</a></li>
+      <li><a data-target="impact">Your Impact</a></li>
+      <li><a data-target="next">Next Steps</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="overview" class="active">
+    <img class="main-image" src="https://source.unsplash.com/featured/?recycling" alt="Overview Image" />
+    <h2>Overview</h2>
+    <p>Cans for Cause is a nonprofit organization dedicated to reducing waste and supporting communities by collecting and recycling aluminum cans. Our mission is to turn small, everyday actions into big environmental and social impact.</p>
+  </section>
+
+  <section id="impact">
+    <img class="main-image" src="https://source.unsplash.com/featured/?environment" alt="Impact Image" />
+    <h2>Your Impact</h2>
+    <p>Each can you collect helps reduce pollution and funds local community programs. Thanks to your efforts, we've recycled over 100,000 cans and supported dozens of grassroots initiatives.</p>
+  </section>
+
+  <section id="next">
+    <img class="main-image" src="https://source.unsplash.com/featured/?community" alt="Next Steps Image" />
+    <h2>Next Steps</h2>
+    <p>Get involved by starting a collection group at your school or neighborhood, becoming a volunteer, or donating to help us grow. Every action makes a difference!</p>
+  </section>
+</main>
+
+<script>
+  const links = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('main section');
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      // Remove active classes
+      links.forEach(l => l.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+
+      // Add active class to clicked link
+      link.classList.add('active');
+
+      // Show corresponding section
+      const targetId = link.getAttribute('data-target');
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
